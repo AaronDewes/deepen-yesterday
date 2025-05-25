@@ -1,0 +1,11 @@
+schema: api.gql
+documents: [./**/*.vue]
+generates:
+  ./utils/gql/:
+    preset: client
+    plugins:
+      - add: { content: '// This file is generated automatically. DO NOT EDIT IT MANUALLY.' }
+      - add: { content: '/* eslint-disable */' }
+    config:
+      useTypeImports: true
+      gqlTagName: gql

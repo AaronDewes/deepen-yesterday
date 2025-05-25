@@ -1,0 +1,8 @@
+[package]
+name = "nintendo-yesterday-db"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sea-orm = { version = "1.1.8", features = ["postgres-array", "runtime-tokio-native-tls", "sqlx-postgres"] }
+sea-orm-migration = { version = "1.1.8", default-features = false }

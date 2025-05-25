@@ -1,0 +1,25 @@
+[package]
+name = "downloader"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.97"
+base64 = "0.22.1"
+chrono = "0.4.40"
+deepen-api = { path = "../deepen-api" }
+minio = "0.1.0"
+reqwest = "0.12.15"
+sea-orm = "1.1.8"
+serde_json = "1.0.140"
+tokio = { version = "1.44.1", features = ["macros", "rt-multi-thread"] }
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"
+nintendo-yesterday-db = { path = "../db" }
+tempfile = "3.19.1"
+url = "2.5.4"
+uuid = { version = "1.16.0", features = ["v4"] }
+dom_query = "0.16.0"
+async-recursion = "1.1.1"
+bytes = "1.10.1"
+regex = "1.11.1"

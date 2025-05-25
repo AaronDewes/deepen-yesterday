@@ -1,0 +1,758 @@
+# Indicates that an Input Object is a OneOf Input Object (and thus requires
+#                         exactly one of its field be provided)
+directive @oneOf on INPUT_OBJECT
+
+enum AnimationTypeEnum {
+  birthday
+  daily
+  event
+  special
+}
+
+input AnimationTypeEnumFilterInput {
+  eq: AnimationTypeEnum
+  ne: AnimationTypeEnum
+  gt: AnimationTypeEnum
+  gte: AnimationTypeEnum
+  lt: AnimationTypeEnum
+  lte: AnimationTypeEnum
+  is_in: [AnimationTypeEnum!]
+  is_not_in: [AnimationTypeEnum!]
+  is_null: AnimationTypeEnum
+  is_not_null: AnimationTypeEnum
+}
+
+input BooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+  gt: Boolean
+  gte: Boolean
+  lt: Boolean
+  lte: Boolean
+  is_in: [Boolean!]
+  is_not_in: [Boolean!]
+  is_null: Boolean
+  is_not_null: Boolean
+}
+
+type Calendar {
+  id: String!
+  skinIp: SkinIpEnum
+  animationType: AnimationTypeEnum
+  day: Int!
+  month: Int!
+  year: Int!
+  repeatType: RepeatTypeEnum
+  dateColor: String
+  animation: String
+  thumbnail: String
+  importedAt: String!
+}
+
+type CalendarBasic {
+  id: String!
+  skinIp: SkinIpEnum
+  animationType: AnimationTypeEnum
+  day: Int!
+  month: Int!
+  year: Int!
+  repeatType: RepeatTypeEnum
+  dateColor: String
+  animation: String
+  thumbnail: String
+  importedAt: String!
+}
+
+type CalendarConnection {
+  pageInfo: PageInfo!
+  paginationInfo: PaginationInfo
+  nodes: [Calendar!]!
+  edges: [CalendarEdge!]!
+}
+
+type CalendarEdge {
+  cursor: String!
+  node: Calendar!
+}
+
+input CalendarFilterInput {
+  id: StringFilterInput
+  skinIp: SkinIpEnumFilterInput
+  animationType: AnimationTypeEnumFilterInput
+  day: IntegerFilterInput
+  month: IntegerFilterInput
+  year: IntegerFilterInput
+  repeatType: RepeatTypeEnumFilterInput
+  dateColor: StringFilterInput
+  animation: StringFilterInput
+  thumbnail: StringFilterInput
+  importedAt: TextFilterInput
+  and: [CalendarFilterInput!]
+  or: [CalendarFilterInput!]
+}
+
+input CalendarInsertInput {
+  id: String!
+  skinIp: SkinIpEnum
+  animationType: AnimationTypeEnum
+  day: Int!
+  month: Int!
+  year: Int!
+  repeatType: RepeatTypeEnum
+  dateColor: String
+  animation: String
+  thumbnail: String
+  importedAt: String!
+}
+
+input CalendarOrderInput {
+  id: OrderByEnum
+  skinIp: OrderByEnum
+  animationType: OrderByEnum
+  day: OrderByEnum
+  month: OrderByEnum
+  year: OrderByEnum
+  repeatType: OrderByEnum
+  dateColor: OrderByEnum
+  animation: OrderByEnum
+  thumbnail: OrderByEnum
+  importedAt: OrderByEnum
+  rawData: OrderByEnum
+}
+
+input CalendarUpdateInput {
+  id: String
+  skinIp: SkinIpEnum
+  animationType: AnimationTypeEnum
+  day: Int
+  month: Int
+  year: Int
+  repeatType: RepeatTypeEnum
+  dateColor: String
+  animation: String
+  thumbnail: String
+  importedAt: String
+}
+
+type ContentItem {
+  id: String!
+  title: String!
+  category: String!
+  categoryColor: String
+  contentUrl: String
+  contentBodyUrl: String
+  titleColor: TitleColorEnum
+  linkedEventScheduleId: String
+  isNews: Boolean!
+  isPremiere: Boolean!
+  note: String
+  panelWidth: Int!
+  panelHeight: Int!
+  contentImages: [String!]
+  contentMovie: String
+  icon: String
+  thumbnail: String
+  panel: String
+  importedAt: String!
+  contentItemTag(
+    filters: ContentItemTagFilterInput
+    orderBy: ContentItemTagOrderInput
+    pagination: PaginationInput
+  ): ContentItemTagConnection!
+  eventSchedule: EventSchedule
+}
+
+type ContentItemBasic {
+  id: String!
+  title: String!
+  category: String!
+  categoryColor: String
+  contentUrl: String
+  contentBodyUrl: String
+  titleColor: TitleColorEnum
+  linkedEventScheduleId: String
+  isNews: Boolean!
+  isPremiere: Boolean!
+  note: String
+  panelWidth: Int!
+  panelHeight: Int!
+  contentImages: [String!]
+  contentMovie: String
+  icon: String
+  thumbnail: String
+  panel: String
+  importedAt: String!
+}
+
+type ContentItemConnection {
+  pageInfo: PageInfo!
+  paginationInfo: PaginationInfo
+  nodes: [ContentItem!]!
+  edges: [ContentItemEdge!]!
+}
+
+type ContentItemEdge {
+  cursor: String!
+  node: ContentItem!
+}
+
+input ContentItemFilterInput {
+  id: TextFilterInput
+  title: StringFilterInput
+  category: StringFilterInput
+  categoryColor: StringFilterInput
+  contentUrl: StringFilterInput
+  contentBodyUrl: StringFilterInput
+  titleColor: TitleColorEnumFilterInput
+  linkedEventScheduleId: TextFilterInput
+  isNews: BooleanFilterInput
+  isPremiere: BooleanFilterInput
+  note: StringFilterInput
+  panelWidth: IntegerFilterInput
+  panelHeight: IntegerFilterInput
+  contentMovie: StringFilterInput
+  icon: StringFilterInput
+  thumbnail: StringFilterInput
+  panel: StringFilterInput
+  importedAt: TextFilterInput
+  and: [ContentItemFilterInput!]
+  or: [ContentItemFilterInput!]
+}
+
+input ContentItemInsertInput {
+  id: String!
+  title: String!
+  category: String!
+  categoryColor: String
+  contentUrl: String
+  contentBodyUrl: String
+  titleColor: TitleColorEnum
+  linkedEventScheduleId: String
+  isNews: Boolean!
+  isPremiere: Boolean!
+  note: String
+  panelWidth: Int!
+  panelHeight: Int!
+  contentImages: [String!]
+  contentMovie: String
+  icon: String
+  thumbnail: String
+  panel: String
+  importedAt: String!
+}
+
+input ContentItemOrderInput {
+  id: OrderByEnum
+  title: OrderByEnum
+  category: OrderByEnum
+  categoryColor: OrderByEnum
+  contentUrl: OrderByEnum
+  contentBodyUrl: OrderByEnum
+  titleColor: OrderByEnum
+  linkedEventScheduleId: OrderByEnum
+  isNews: OrderByEnum
+  isPremiere: OrderByEnum
+  note: OrderByEnum
+  panelWidth: OrderByEnum
+  panelHeight: OrderByEnum
+  contentImages: OrderByEnum
+  contentMovie: OrderByEnum
+  icon: OrderByEnum
+  thumbnail: OrderByEnum
+  panel: OrderByEnum
+  importedAt: OrderByEnum
+  rawData: OrderByEnum
+}
+
+type ContentItemTag {
+  id: String!
+  contentItemId: String!
+  tagId: String!
+  contentItem: ContentItem
+  tag: Tag
+}
+
+type ContentItemTagBasic {
+  id: String!
+  contentItemId: String!
+  tagId: String!
+}
+
+type ContentItemTagConnection {
+  pageInfo: PageInfo!
+  paginationInfo: PaginationInfo
+  nodes: [ContentItemTag!]!
+  edges: [ContentItemTagEdge!]!
+}
+
+type ContentItemTagEdge {
+  cursor: String!
+  node: ContentItemTag!
+}
+
+input ContentItemTagFilterInput {
+  id: TextFilterInput
+  contentItemId: TextFilterInput
+  tagId: StringFilterInput
+  and: [ContentItemTagFilterInput!]
+  or: [ContentItemTagFilterInput!]
+}
+
+input ContentItemTagInsertInput {
+  id: String!
+  contentItemId: String!
+  tagId: String!
+}
+
+input ContentItemTagOrderInput {
+  id: OrderByEnum
+  contentItemId: OrderByEnum
+  tagId: OrderByEnum
+}
+
+input ContentItemTagUpdateInput {
+  id: String
+  contentItemId: String
+  tagId: String
+}
+
+input ContentItemUpdateInput {
+  id: String
+  title: String
+  category: String
+  categoryColor: String
+  contentUrl: String
+  contentBodyUrl: String
+  titleColor: TitleColorEnum
+  linkedEventScheduleId: String
+  isNews: Boolean
+  isPremiere: Boolean
+  note: String
+  panelWidth: Int
+  panelHeight: Int
+  contentImages: [String!]
+  contentMovie: String
+  icon: String
+  thumbnail: String
+  panel: String
+  importedAt: String
+}
+
+input CursorInput {
+  cursor: String
+  limit: Int!
+}
+
+type EventSchedule {
+  id: String!
+  startTime: String!
+  endTime: String!
+  allDay: Boolean!
+  name: String!
+  icon: String
+  categoryName: String
+  memo: String
+  isDisplayHomeView: Boolean!
+  largeCategory: String
+  isUndefinedEndedAt: Boolean!
+  isMiddleDay: Boolean!
+  importedAt: String!
+  contentItem(
+    filters: ContentItemFilterInput
+    orderBy: ContentItemOrderInput
+    pagination: PaginationInput
+  ): ContentItemConnection!
+}
+
+type EventScheduleBasic {
+  id: String!
+  startTime: String!
+  endTime: String!
+  allDay: Boolean!
+  name: String!
+  icon: String
+  categoryName: String
+  memo: String
+  isDisplayHomeView: Boolean!
+  largeCategory: String
+  isUndefinedEndedAt: Boolean!
+  isMiddleDay: Boolean!
+  importedAt: String!
+}
+
+type EventScheduleConnection {
+  pageInfo: PageInfo!
+  paginationInfo: PaginationInfo
+  nodes: [EventSchedule!]!
+  edges: [EventScheduleEdge!]!
+}
+
+type EventScheduleEdge {
+  cursor: String!
+  node: EventSchedule!
+}
+
+input EventScheduleFilterInput {
+  id: TextFilterInput
+  startTime: TextFilterInput
+  endTime: TextFilterInput
+  allDay: BooleanFilterInput
+  name: StringFilterInput
+  icon: StringFilterInput
+  categoryName: StringFilterInput
+  memo: StringFilterInput
+  isDisplayHomeView: BooleanFilterInput
+  largeCategory: StringFilterInput
+  isUndefinedEndedAt: BooleanFilterInput
+  isMiddleDay: BooleanFilterInput
+  importedAt: TextFilterInput
+  and: [EventScheduleFilterInput!]
+  or: [EventScheduleFilterInput!]
+}
+
+input EventScheduleInsertInput {
+  id: String!
+  startTime: String!
+  endTime: String!
+  allDay: Boolean!
+  name: String!
+  icon: String
+  categoryName: String
+  memo: String
+  isDisplayHomeView: Boolean!
+  largeCategory: String
+  isUndefinedEndedAt: Boolean!
+  isMiddleDay: Boolean!
+  importedAt: String!
+}
+
+input EventScheduleOrderInput {
+  id: OrderByEnum
+  startTime: OrderByEnum
+  endTime: OrderByEnum
+  allDay: OrderByEnum
+  name: OrderByEnum
+  icon: OrderByEnum
+  categoryName: OrderByEnum
+  memo: OrderByEnum
+  isDisplayHomeView: OrderByEnum
+  largeCategory: OrderByEnum
+  isUndefinedEndedAt: OrderByEnum
+  isMiddleDay: OrderByEnum
+  importedAt: OrderByEnum
+  rawData: OrderByEnum
+}
+
+input EventScheduleUpdateInput {
+  id: String
+  startTime: String
+  endTime: String
+  allDay: Boolean
+  name: String
+  icon: String
+  categoryName: String
+  memo: String
+  isDisplayHomeView: Boolean
+  largeCategory: String
+  isUndefinedEndedAt: Boolean
+  isMiddleDay: Boolean
+  importedAt: String
+}
+
+input IntegerFilterInput {
+  eq: Int
+  ne: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  is_in: [Int!]
+  is_not_in: [Int!]
+  is_null: Int
+  is_not_null: Int
+  between: [Int!]
+  not_between: [Int!]
+}
+
+type Mutation {
+  _ping: String
+  calendarCreateOne(data: CalendarInsertInput!): CalendarBasic!
+  calendarCreateBatch(data: [CalendarInsertInput!]!): [CalendarBasic!]!
+  calendarUpdate(
+    data: CalendarUpdateInput!
+    filter: CalendarFilterInput
+  ): [CalendarBasic!]!
+  calendarDelete(filter: CalendarFilterInput): Int!
+  contentItemCreateOne(data: ContentItemInsertInput!): ContentItemBasic!
+  contentItemCreateBatch(data: [ContentItemInsertInput!]!): [ContentItemBasic!]!
+  contentItemUpdate(
+    data: ContentItemUpdateInput!
+    filter: ContentItemFilterInput
+  ): [ContentItemBasic!]!
+  contentItemDelete(filter: ContentItemFilterInput): Int!
+  contentItemTagCreateOne(
+    data: ContentItemTagInsertInput!
+  ): ContentItemTagBasic!
+  contentItemTagCreateBatch(
+    data: [ContentItemTagInsertInput!]!
+  ): [ContentItemTagBasic!]!
+  contentItemTagUpdate(
+    data: ContentItemTagUpdateInput!
+    filter: ContentItemTagFilterInput
+  ): [ContentItemTagBasic!]!
+  contentItemTagDelete(filter: ContentItemTagFilterInput): Int!
+  eventScheduleCreateOne(data: EventScheduleInsertInput!): EventScheduleBasic!
+  eventScheduleCreateBatch(
+    data: [EventScheduleInsertInput!]!
+  ): [EventScheduleBasic!]!
+  eventScheduleUpdate(
+    data: EventScheduleUpdateInput!
+    filter: EventScheduleFilterInput
+  ): [EventScheduleBasic!]!
+  eventScheduleDelete(filter: EventScheduleFilterInput): Int!
+  tagCreateOne(data: TagInsertInput!): TagBasic!
+  tagCreateBatch(data: [TagInsertInput!]!): [TagBasic!]!
+  tagUpdate(data: TagUpdateInput!, filter: TagFilterInput): [TagBasic!]!
+  tagDelete(filter: TagFilterInput): Int!
+}
+
+input OffsetInput {
+  limit: Int!
+  offset: Int!
+}
+
+enum OrderByEnum {
+  ASC
+  DESC
+}
+
+type PageInfo {
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+input PageInput {
+  limit: Int!
+  page: Int!
+}
+
+type PaginationInfo {
+  pages: Int!
+  current: Int!
+  offset: Int!
+  total: Int!
+}
+
+input PaginationInput {
+  cursor: CursorInput
+  page: PageInput
+  offset: OffsetInput
+}
+
+type Query {
+  calendar(
+    filters: CalendarFilterInput
+    orderBy: CalendarOrderInput
+    pagination: PaginationInput
+  ): CalendarConnection!
+  contentItem(
+    filters: ContentItemFilterInput
+    orderBy: ContentItemOrderInput
+    pagination: PaginationInput
+  ): ContentItemConnection!
+  contentItemTag(
+    filters: ContentItemTagFilterInput
+    orderBy: ContentItemTagOrderInput
+    pagination: PaginationInput
+  ): ContentItemTagConnection!
+  eventSchedule(
+    filters: EventScheduleFilterInput
+    orderBy: EventScheduleOrderInput
+    pagination: PaginationInput
+  ): EventScheduleConnection!
+  tag(
+    filters: TagFilterInput
+    orderBy: TagOrderInput
+    pagination: PaginationInput
+  ): TagConnection!
+  _sea_orm_entity_metadata(table_name: String!): String
+}
+
+enum RepeatTypeEnum {
+  none
+  yearly
+}
+
+input RepeatTypeEnumFilterInput {
+  eq: RepeatTypeEnum
+  ne: RepeatTypeEnum
+  gt: RepeatTypeEnum
+  gte: RepeatTypeEnum
+  lt: RepeatTypeEnum
+  lte: RepeatTypeEnum
+  is_in: [RepeatTypeEnum!]
+  is_not_in: [RepeatTypeEnum!]
+  is_null: RepeatTypeEnum
+  is_not_null: RepeatTypeEnum
+}
+
+enum SkinIpEnum {
+  animal_crossing
+  mario
+  pikmin
+  splatoon
+  zelda
+}
+
+input SkinIpEnumFilterInput {
+  eq: SkinIpEnum
+  ne: SkinIpEnum
+  gt: SkinIpEnum
+  gte: SkinIpEnum
+  lt: SkinIpEnum
+  lte: SkinIpEnum
+  is_in: [SkinIpEnum!]
+  is_not_in: [SkinIpEnum!]
+  is_null: SkinIpEnum
+  is_not_null: SkinIpEnum
+}
+
+input StringFilterInput {
+  eq: String
+  ne: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  is_in: [String!]
+  is_not_in: [String!]
+  is_null: String
+  is_not_null: String
+  contains: String
+  starts_with: String
+  ends_with: String
+  like: String
+  not_like: String
+  between: [String!]
+  not_between: [String!]
+}
+
+type Tag {
+  id: String!
+  name: String!
+  icon: String
+  platform: [String!]
+  searchHeaderImage: String
+  searchViewTagColor: String
+  platformText: String
+  importedAt: String!
+  contentItemTag(
+    filters: ContentItemTagFilterInput
+    orderBy: ContentItemTagOrderInput
+    pagination: PaginationInput
+  ): ContentItemTagConnection!
+}
+
+type TagBasic {
+  id: String!
+  name: String!
+  icon: String
+  platform: [String!]
+  searchHeaderImage: String
+  searchViewTagColor: String
+  platformText: String
+  importedAt: String!
+}
+
+type TagConnection {
+  pageInfo: PageInfo!
+  paginationInfo: PaginationInfo
+  nodes: [Tag!]!
+  edges: [TagEdge!]!
+}
+
+type TagEdge {
+  cursor: String!
+  node: Tag!
+}
+
+input TagFilterInput {
+  id: StringFilterInput
+  name: StringFilterInput
+  icon: StringFilterInput
+  searchHeaderImage: StringFilterInput
+  searchViewTagColor: StringFilterInput
+  platformText: StringFilterInput
+  importedAt: TextFilterInput
+  and: [TagFilterInput!]
+  or: [TagFilterInput!]
+}
+
+input TagInsertInput {
+  id: String!
+  name: String!
+  icon: String
+  platform: [String!]
+  searchHeaderImage: String
+  searchViewTagColor: String
+  platformText: String
+  importedAt: String!
+}
+
+input TagOrderInput {
+  id: OrderByEnum
+  name: OrderByEnum
+  icon: OrderByEnum
+  platform: OrderByEnum
+  searchHeaderImage: OrderByEnum
+  searchViewTagColor: OrderByEnum
+  platformText: OrderByEnum
+  importedAt: OrderByEnum
+  rawData: OrderByEnum
+}
+
+input TagUpdateInput {
+  id: String
+  name: String
+  icon: String
+  platform: [String!]
+  searchHeaderImage: String
+  searchViewTagColor: String
+  platformText: String
+  importedAt: String
+}
+
+input TextFilterInput {
+  eq: String
+  ne: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  is_in: [String!]
+  is_not_in: [String!]
+  is_null: String
+  is_not_null: String
+  between: [String!]
+  not_between: [String!]
+}
+
+enum TitleColorEnum {
+  black
+  white
+}
+
+input TitleColorEnumFilterInput {
+  eq: TitleColorEnum
+  ne: TitleColorEnum
+  gt: TitleColorEnum
+  gte: TitleColorEnum
+  lt: TitleColorEnum
+  lte: TitleColorEnum
+  is_in: [TitleColorEnum!]
+  is_not_in: [TitleColorEnum!]
+  is_null: TitleColorEnum
+  is_not_null: TitleColorEnum
+}

@@ -1,0 +1,28 @@
+services:
+    postgres:
+        image: postgres:latest
+        environment:
+            POSTGRES_USER: nintendo
+            POSTGRES_PASSWORD: yesterday
+            POSTGRES_DB: archive
+        ports:
+            # Using this because I had another postgres running locally
+            - "127.0.0.1:5434:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+    minio:
+        image: minio/minio
+        environment:
+            MINIO_ROOT_USER: minioadmin
+            MINIO_ROOT_PASSWORD: minioadmin
+        ports:
+            - "127.0.0.1:9000:9000"
+        command: server /data
+        volumes:
+            - minio_data:/data
+
+volumes:
+    postgres_data:
+        driver: local
+    minio_data:
+        driver: local
