@@ -1,4 +1,4 @@
-# Nintendo Yesterday
+# Deepen Yesterday
 
 This is a WIP app designed to archive the data inside the "Nintendo Today" app.
 It is not affiliated with Nintendo in any way.
